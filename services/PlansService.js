@@ -4,6 +4,15 @@ class PlansService {
     constructor() {
         this.Plan = Database['Plan'];
     }
+    //Metodo que lista todos os registros da base
+    async getAll() {
+        try {
+            await this.Plan.findAll();
+        } catch (err) {
+            return undefined
+        }
+
+    }
 
     //Metodo que salva na base
     async store(plans) {
