@@ -2,20 +2,29 @@ const PlansService = require('../services/PlansService');
 
 class PlansController {
 
-     async index(req, res) {
+    async index(req, res) {
         var plans = await PlansService.getAll();
-       res.render('plans/index', {plans});
+        res.render('plans/index', {
+            plans
+        });
     }
 
     create(req, res) {
         res.render('plans/create', {
             title_msg: req.flash('title_msg'),
-            list_msg: req.flash('list_msg'), client_msg: req.flash('client_msg'),
+            list_msg: req.flash('list_msg'),
+            client_msg: req.flash('client_msg'),
             value_msg: req.flash('value_msg')
         });
     }
     async store(req, res) {
-        var { title, list, client, value, imports } = req.body;
+        var {
+            title,
+            list,
+            client,
+            value,
+            imports
+        } = req.body;
 
         var plan = {
             title,
